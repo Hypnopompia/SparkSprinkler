@@ -18,6 +18,8 @@ void setup()
     // Turn everything off
     Off();
 
+    Spark.function("sprinkler", sprinkler);
+
     // create the schedule
     Alarm.alarmRepeat(21,0,0,  Zone1); //  9:00 pm
     Alarm.alarmRepeat(21,20,0, Zone2); //  9:20 pm
@@ -30,6 +32,32 @@ void setup()
 void  loop(){  
     digitalClockDisplay();
     Alarm.delay(1000); // wait one second between clock display
+}
+
+int sprinkler(String command) {
+    if (command == "Zone1") {
+        Zone1();
+    } else if (command == "Zone1") {
+        Zone1();
+    } else if (command == "Zone2") {
+        Zone2();
+    } else if (command == "Zone3") {
+        Zone3();
+    } else if (command == "Zone4") {
+        Zone4();
+    } else if (command == "Zone5") {
+        Zone5();
+    } else if (command == "Zone6") {
+        Zone6();
+    } else if (command == "Zone7") {
+        Zone7();
+    } else if (command == "Zone8") {
+        Zone8();
+    } else if (command == "Off") {
+        Off();
+    }
+    
+    return 0;
 }
 
 void Off() {
