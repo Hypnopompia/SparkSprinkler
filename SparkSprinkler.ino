@@ -47,49 +47,49 @@ void Off() {
 void Zone1() {
     Off();
     Serial.println("Zone 1 On");
-    digitalWrite(D0, LOW);
+    digitalWrite(D0, HIGH);
 }
 
 void Zone2() {
     Off();
     Serial.println("Zone 2 On");
-    digitalWrite(D1, LOW);
+    digitalWrite(D1, HIGH);
 }
 
 void Zone3() {
     Off();
     Serial.println("Zone 3 On");
-    digitalWrite(D2, LOW);
+    digitalWrite(D2, HIGH);
 }
 
 void Zone4() {
     Off();
     Serial.println("Zone 4 On");
-    digitalWrite(D3, LOW);
+    digitalWrite(D3, HIGH);
 }
 
 void Zone5() {
     Off();
     Serial.println("Zone 5 On");
-    digitalWrite(D4, LOW);
+    digitalWrite(D4, HIGH);
 }
 
 void Zone6() {
     Off();
     Serial.println("Zone 6 On");
-    digitalWrite(D5, LOW);
+    digitalWrite(D5, HIGH);
 }
 
 void Zone7() {
     Off();
     Serial.println("Zone 7 On");
-    digitalWrite(D6, LOW);
+    digitalWrite(D6, HIGH);
 }
 
 void Zone8() {
     Off();
     Serial.println("Zone 8 On");
-    digitalWrite(D7, LOW);
+    digitalWrite(D7, HIGH);
 }
 
 void digitalClockDisplay()
