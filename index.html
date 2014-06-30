@@ -40,7 +40,7 @@ SOFTWARE.
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sprinkler Control</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -70,7 +70,7 @@ SOFTWARE.
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script>
 			$(function(){
 				var deviceID = "<PUT YOUR DEVICE ID HERE>";
@@ -81,14 +81,28 @@ SOFTWARE.
 					btn.button('loading');
 
 					var zone = $(this).attr('data-zone');
-					// console.log(zone);
-					$.post("https://api.spark.io/v1/devices/" + deviceID + "/sprinkler", {
-						args: zone,
-						access_token: accessToken
-					}, function(result){
-						// console.log(result);
-						btn.button('reset');
+
+					$.ajax({
+						url: "https://api.spark.io/v1/devices/" + deviceID + "/sprinkler",
+						type: "POST",
+						data: {
+							args: zone,
+							access_token: accessToken
+						},
+						complete: function(xhr, status){
+							btn.button('reset');
+							if (status == "error") {
+								if (xhr.responseJSON.error_description) {
+									alert("There was an error connecting to the spark api. " + xhr.responseJSON.error_description);
+								} else if (xhr.responseJSON.info) {
+									alert("There was an error connecting to the spark api. " + xhr.responseJSON.info);
+								}
+							} else if (status == "timeout") {
+								alert("The connection timed out.");
+							}
+						}
 					});
+
 				});
 			});
 		</script>
